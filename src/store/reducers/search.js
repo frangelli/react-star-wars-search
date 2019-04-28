@@ -1,10 +1,13 @@
 import { handle } from "redux-pack";
-import { starWarsDataParser } from "utils";
+import { starWarsDataParser, filmsDataParser } from "utils";
 
 import * as types from "../actionTypes";
 const initialState = {
   searchTerm: "",
-  people: []
+  people: [],
+  searchMade: false,
+  films: [],
+  selectedPersonFilms: []
 };
 export default (state = initialState, action) => {
   const { type, payload } = action;
@@ -14,6 +17,7 @@ export default (state = initialState, action) => {
         start: prevState => ({
           ...prevState,
           loading: true,
+          searchMade: true,
           people: []
         }),
         success: prevState => ({
@@ -27,12 +31,30 @@ export default (state = initialState, action) => {
           people: []
         })
       });
+    case types.FETCH_FILMS:
+      return handle(state, action, {
+        start: prevState => ({
+          ...prevState,
+          films: []
+        }),
+        success: prevState => ({
+          ...prevState,
+          films: filmsDataParser(payload.data.results)
+        }),
+        failure: prevState => ({
+          ...prevState,
+          films: []
+        })
+      });
     case types.SET_SEARCH_DATA:
-      const newState = { ...state, ...payload };
-      console.log("-----------------------");
-      console.log("SET_SEARCH_DATA REDUCER: ", newState);
-      console.log("-----------------------");
-      return newState;
+      return { ...state, ...payload };
+    case types.GET_FILMS_BY_PERSON:
+      return {
+        ...state,
+        selectedPersonFilms: state.films.filter(f =>
+          payload.films.includes(f.url)
+        )
+      };
     default:
       return state;
   }

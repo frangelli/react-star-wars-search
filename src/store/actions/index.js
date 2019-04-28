@@ -11,6 +11,21 @@ export const search = searchTerm => {
   };
 };
 
+export const fetchFilms = () => {
+  const req = axios.get(`${apiRootUrl}/films/`);
+  return {
+    type: types.FETCH_FILMS,
+    promise: req
+  };
+};
+
+export const getFilmsByPerson = person => {
+  return {
+    type: types.GET_FILMS_BY_PERSON,
+    payload: person
+  };
+};
+
 export const setSearchData = data => {
   return {
     type: types.SET_SEARCH_DATA,
