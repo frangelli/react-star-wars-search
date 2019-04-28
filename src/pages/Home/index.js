@@ -1,10 +1,15 @@
 import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import SearchInput from "../../components/SearchInput";
 import PeopleList from "../../components/PeopleList";
 
 export class Home extends Component {
+  static propTypes = {
+    people: PropTypes.array.isRequired
+  };
+
   render() {
     return (
       <Fragment>
