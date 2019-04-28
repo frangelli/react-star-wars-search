@@ -1,4 +1,6 @@
 import { handle } from "redux-pack";
+import { starWarsDataParser } from "utils";
+
 import * as types from "../actionTypes";
 const initialState = {
   searchTerm: "",
@@ -17,7 +19,7 @@ export default (state = initialState, action) => {
         success: prevState => ({
           ...prevState,
           loading: false,
-          people: payload.data.results
+          people: starWarsDataParser(payload.data.results)
         }),
         failure: prevState => ({
           ...prevState,
