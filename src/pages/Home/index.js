@@ -1,7 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import SearchInput from "../../components/SearchInput";
+import PeopleList from "../../components/PeopleList";
 
-export default class Home extends Component {
+export class Home extends Component {
   render() {
-    return <h1>HOME</h1>;
+    return (
+      <Fragment>
+        <SearchInput />
+        <PeopleList people={this.props.people} />
+      </Fragment>
+    );
   }
 }
+
+const mapStateToProps = state => ({
+  people: state.searchReducer.people
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

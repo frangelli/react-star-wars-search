@@ -6,11 +6,6 @@ import searchReducer from "./reducers/search";
 const reducer = combineReducers({
   searchReducer
 });
-const initialState = {};
-const store = createStore(
-  reducer,
-  initialState,
-  applyMiddleware(reduxPackMiddleware)
-);
+const store = createStore(reducer, applyMiddleware(reduxPackMiddleware));
 
 export default store;
