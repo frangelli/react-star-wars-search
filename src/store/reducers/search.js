@@ -26,7 +26,11 @@ export default (state = initialState, action) => {
         })
       });
     case types.SET_SEARCH_DATA:
-      return { ...state, ...payload };
+      const newState = { ...state, ...payload };
+      console.log("-----------------------");
+      console.log("SET_SEARCH_DATA REDUCER: ", newState);
+      console.log("-----------------------");
+      return newState;
     default:
       return state;
   }

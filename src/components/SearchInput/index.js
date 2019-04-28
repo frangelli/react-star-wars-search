@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { search, setSearchData } from "../../store/actions";
+import { search, setSearchData } from "store/actions";
 
 export class SearchInput extends Component {
   constructor(props) {
@@ -34,7 +34,13 @@ export class SearchInput extends Component {
   }
 
   render() {
-    return <input type="text" onChange={this.onChange} />;
+    return (
+      <input
+        type="text"
+        onChange={this.onChange}
+        value={this.props.searchTerm}
+      />
+    );
   }
 }
 

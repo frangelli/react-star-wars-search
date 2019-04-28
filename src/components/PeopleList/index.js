@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { uniqueId } from "lodash";
+import { setSearchData } from "store/actions";
 import PersonRow from "./PersonRow";
 
 export class PeopleList extends Component {
   static propTypes = {
     people: PropTypes.array.isRequired,
-    selectPerson: PropTypes.func.isRequired
+    setSearchData: PropTypes.func.isRequired
+  };
+
+  onItemClick = person => {
+    const { history, setSearchData } = this.props;
+    setSearchData({ person });
+    history.push("/details");
   };
 
   render() {
-    const { people, selectPerson } = this.props;
+    const { people } = this.props;
     return (
       <ul>
         {people.map(person => {
@@ -20,7 +28,7 @@ export class PeopleList extends Component {
             <PersonRow
               key={uniqueId()}
               person={person}
-              onItemClick={selectPerson}
+              onItemClick={this.onItemClick}
             />
           );
         })}
@@ -35,9 +43,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      selectPerson: person => {
-        console.log("row clicked", person);
-      }
+      setSearchData
     },
     dispatch
   );
@@ -45,4 +51,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PeopleList);
+)(withRouter(PeopleList));
