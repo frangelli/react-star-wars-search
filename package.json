@@ -6,7 +6,8 @@
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.js",
     "build": "webpack --config ./webpack.config.js",
-    "test": "npm start & ./node_modules/.bin/cypress run",
+    "test": "./node_modules/.bin/cypress run",
+    "start:test": "npm start & ./node_modules/.bin/cypress run",
     "test:console": "./node_modules/.bin/cypress open"
   },
   "repository": {
