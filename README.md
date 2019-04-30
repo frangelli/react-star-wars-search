@@ -30,6 +30,13 @@ From the root directory:
 - `npm install`
 - `npm start`
 
+### To run the tests (Cypress)
+
+From the root directory:
+
+- `npm run test` to run the tests in the console
+- `npm run test:console` to open the cypress view
+
 It will start the Webpack dev server at the port `8080`
 
 ### To run the tests (Cypress)
