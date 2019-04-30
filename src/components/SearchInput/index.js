@@ -47,6 +47,7 @@ export class SearchInput extends Component {
             <span className="fa fa-search form-control-feedback" />
             <input
               type="text"
+              id="search-input"
               ref={this.searchFieldRef}
               placeholder="Type here the character name: e.g. R2"
               className="form-control form-control-lg"

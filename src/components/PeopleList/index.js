@@ -27,14 +27,17 @@ export class PeopleList extends Component {
     return (
       <section id="people-list" className="row">
         {loading && (
-          <div className="col col-xs-12 text-center">
+          <div
+            id="search-loading-indicator"
+            className="col col-xs-12 text-center"
+          >
             <div className="spinner-border" role="status">
               <span className="sr-only">Loading...</span>
             </div>
           </div>
         )}
         {people.length === 0 && searchMade && !loading && (
-          <div className="col col-xs-12 text-center">
+          <div id="search-no-results" className="col col-xs-12 text-center">
             <h5 className="text-center">
               I'm your father... and your search has no results!
             </h5>
@@ -42,7 +45,7 @@ export class PeopleList extends Component {
           </div>
         )}
         {people.length === 0 && !searchMade && (
-          <div className="col col-xs-12 text-center">
+          <div id="search-instructions" className="col col-xs-12 text-center">
             <h5 className="text-center">Your search above make!</h5>
             <img width="320" src={yoda} />
           </div>

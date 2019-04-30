@@ -93,7 +93,7 @@ export class Details extends Component {
               </table>
             </Fragment>
           )}
-          <Link to="/" className="btn btn-primary">
+          <Link id="back-btn" to="/" className="btn btn-primary">
             <i className="fa fa-chevron-left" /> Back
           </Link>
         </div>

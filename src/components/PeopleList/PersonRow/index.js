@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const PersonRow = ({ onItemClick, person }) => {
   return (
-    <div className=" col col-xs-12 col-sm-12 col-md-6">
+    <div className="person-row col col-xs-12 col-sm-12 col-md-6">
       <article
         className="card person"
         onClick={() => {
