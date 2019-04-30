@@ -12,6 +12,7 @@ Star Wars Information Search Application created with ReactJS
 - [axios](https://github.com/axios/axios)
 - [Redux Pack](https://github.com/lelandrichardson/redux-pack)
 - [Bootstrap 4](https://getbootstrap.com/)
+- [Cypress](https://cypress.io)
 
 ## Implemented Features
 
@@ -28,6 +29,13 @@ From the root directory:
 
 - `npm install`
 - `npm start`
+
+### To run the tests (Cypress)
+
+From the root directory:
+
+- `npm run test` to run the tests in the console
+- `npm run test:console` to open the cypress view
 
 It will start the Webpack dev server at the port `8080`
 
